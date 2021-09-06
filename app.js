@@ -20,5 +20,24 @@ async function fetchNews(searchQuery) {
 }
 
 function newsResults(results) {
-    let fetchedNews = 
+  let fetchedNews = "";
+  console.log(results);
+
+  results.forEach((result) => {
+    let newsSection = result.sectionName;
+    let newsDate = result.webPublicationDate;
+    let newsURL = result.webUrl;
+    let newsTitle = result.webTitle;
+
+    fetchedNews += `
+    <div class="news">
+    <p>${newsSection}</p>
+    <p>${newsDate}</p>
+    <a href ="${newsURL}" target ="_blank">${newsTitle}</a>
+
+    </div>
+    `;
+
+    newsContainer.innerHTML = fetchedNews;
+  });
 }
